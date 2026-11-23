@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <div>
       {/* 1. Hero Section */}
-      <Section variant="light" className="pt-20 md:pt-32 pb-16 md:pb-24">
+      <Section variant="light" className="pt-28 md:pt-36 pb-16 md:pb-24">
         <Container>
           <Reveal>
             <p className="eyebrow text-brand mb-3 font-semibold">
