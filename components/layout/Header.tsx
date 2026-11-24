@@ -14,6 +14,10 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const handleCloseMobile = React.useCallback(() => {
+    setMobileOpen(false);
+  }, []);
+
   // Desktop dropdown state
   const [activeItem, setActiveItem] = useState<NavItem | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -200,7 +204,7 @@ export function Header() {
       <MobileNav
         navItems={siteConfig.navLinks}
         isOpen={mobileOpen}
-        onClose={() => setMobileOpen(false)}
+        onClose={handleCloseMobile}
         phone={siteConfig.phone}
       />
     </>

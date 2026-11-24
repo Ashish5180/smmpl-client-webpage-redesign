@@ -19,14 +19,18 @@ interface MobileNavProps {
 export function MobileNav({ navItems, isOpen, onClose, phone }: MobileNavProps) {
   const pathname = usePathname();
   const shouldReduceMotion = useReducedMotion();
+  const prevPathnameRef = React.useRef(pathname);
   const [expandedAccordions, setExpandedAccordions] = useState<Record<string, boolean>>({
     "About Us": false,
     Products: false,
   });
 
-  // Automatically close mobile menu on route change
+  // Automatically close mobile menu ONLY when route actually changes
   useEffect(() => {
-    onClose();
+    if (prevPathnameRef.current !== pathname) {
+      prevPathnameRef.current = pathname;
+      onClose();
+    }
   }, [pathname, onClose]);
 
   // Lock body scroll while open
@@ -79,7 +83,7 @@ export function MobileNav({ navItems, isOpen, onClose, phone }: MobileNavProps) 
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: shouldReduceMotion ? 0 : -8, scale: 0.98 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed top-20 left-1/2 -translate-x-1/2 w-[min(1200px,calc(100%-2rem))] z-50 lg:hidden max-h-[calc(100vh-6rem)] overflow-y-auto skeuo-pill-bar rounded-3xl p-5 shadow-2xl space-y-4"
+            className="fixed top-20 left-1/2 -translate-x-1/2 w-[min(1200px,calc(100%-2rem))] z-[45] lg:hidden max-h-[calc(100vh-6rem)] overflow-y-auto skeuo-pill-bar rounded-3xl p-5 shadow-2xl space-y-4"
           >
             <div className="space-y-1">
               {navItems.map((item) => {

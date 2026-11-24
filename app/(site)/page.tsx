@@ -1,6 +1,7 @@
 // TEMP: remove before launch
 
 import React from "react";
+import { Hero } from "@/components/home/Hero";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
@@ -22,31 +23,7 @@ export default function HomePage() {
   return (
     <div>
       {/* 1. Hero Section */}
-      <Section variant="light" className="pt-28 md:pt-36 pb-16 md:pb-24">
-        <Container>
-          <Reveal>
-            <p className="eyebrow text-brand mb-3 font-semibold">
-              Precision Engineering & Tooling
-            </p>
-            <h1 className="font-heading font-bold text-ink max-w-4xl">
-              Molding Excellence, Shaping Futures.
-            </h1>
-            <p className="readable text-muted mt-6 text-base">
-              Engineered high-precision injection molding and technical tooling
-              delivering sub-micron repeatability for mission-critical
-              automotive, aerospace, and medical assemblies.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button href="/contact" variant="primary">
-                Get a Quote
-              </Button>
-              <Button href="/products" variant="outline">
-                Explore Products
-              </Button>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
+      <Hero />
 
       {/* 2. Dark Section */}
       <Section variant="dark">
