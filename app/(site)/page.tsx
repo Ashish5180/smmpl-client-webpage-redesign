@@ -2,7 +2,12 @@
 
 import React from "react";
 import { Hero } from "@/components/home/Hero";
-import { Button } from "@/components/ui/Button";
+import { AboutSection } from "@/components/home/AboutSection";
+import { IndustriesSection } from "@/components/home/IndustriesSection";
+import { ProductsSection } from "@/components/home/ProductsSection";
+import { TrustedSection } from "@/components/home/TrustedSection";
+import { QuoteBuilder } from "@/components/quote/QuoteBuilder";
+import { BlogSection } from "@/components/home/BlogSection";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -25,31 +30,25 @@ export default function HomePage() {
       {/* 1. Hero Section */}
       <Hero />
 
-      {/* 2. Dark Section */}
-      <Section variant="dark">
-        <Container>
-          <Reveal>
-            <p className="eyebrow text-brand mb-3 font-semibold">
-              Manufacturing Standards
-            </p>
-            <h2 className="font-heading font-bold text-paper max-w-3xl">
-              Engineered for Tight Tolerances & Zero Defect Production
-            </h2>
-            <p className="readable text-gray-400 mt-4 text-base">
-              Equipped with high-tonnage all-electric injection molding cells,
-              automated CMM inspection, and closed-loop process monitoring to
-              guarantee part-to-part consistency across millions of cycles.
-            </p>
-            <div className="mt-8">
-              <Button href="/quality" variant="onDark">
-                View Quality Specifications
-              </Button>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
+      {/* 2. About SMMIPL Section */}
+      <AboutSection />
 
-      {/* 3. Typography & Legibility Test Section */}
+      {/* 3. Industries We Served Section */}
+      <IndustriesSection />
+
+      {/* 4. Our Products Section */}
+      <ProductsSection />
+
+      {/* 5. Trusted By (Stats + Clients) Section */}
+      <TrustedSection />
+
+      {/* 6. Get A Quote Section */}
+      <QuoteBuilder />
+
+      {/* 7. Latest Blogs & News Section */}
+      <BlogSection />
+
+      {/* 8. Typography & Legibility Test Section */}
       <Section variant="light" className="border-t border-line">
         <Container>
           <Reveal>

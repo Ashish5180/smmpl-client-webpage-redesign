@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="medLightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fc" />
+      <stop offset="50%" stop-color="#f0f3f8" />
+      <stop offset="100%" stop-color="#e4e8f0" />
+    </linearGradient>
+    <pattern id="medLightGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="1" />
+      <circle cx="0" cy="0" r="1" fill="#000000" fill-opacity="0.08" />
+    </pattern>
+    <linearGradient id="medCleanroomLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dce1ec" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="1000" fill="url(#medLightBg)" />
+  <rect width="800" height="1000" fill="url(#medLightGrid)" />
+
+  <!-- Technical Top Header -->
+  <g transform="translate(50, 70)">
+    <text x="0" y="0" fill="#E03A2B" font-family="monospace" font-size="12" font-weight="600" letter-spacing="0.1em">SECTOR: MED-03 // CLEANROOM MEDICAL</text>
+    <text x="700" y="0" text-anchor="end" fill="#6b6b70" font-family="monospace" font-size="11">MICRON TOLERANCE</text>
+    <line x1="0" y1="16" x2="700" y2="16" stroke="#000000" stroke-opacity="0.08" stroke-width="1" />
+  </g>
+
+  <!-- Engineering Medical Component Wireframe (Multi-Cavity Micro Fluidic Manifold & Surgical Housing) -->
+  <g transform="translate(400, 480)">
+    <!-- Base Micro-Precision Tooling Block -->
+    <rect x="-220" y="-190" width="440" height="380" rx="20" fill="url(#medCleanroomLight)" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    
+    <!-- Multi-Cavity Mold Insert Array (8-Cavity Precision Micro-Tooling) -->
+    <g transform="translate(-140, -110)">
+      <!-- Row 1 -->
+      <circle cx="0" cy="0" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="90" cy="0" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="90" cy="0" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="180" cy="0" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="180" cy="0" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="270" cy="0" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="270" cy="0" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      
+      <!-- Row 2 -->
+      <circle cx="0" cy="110" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="0" cy="110" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="90" cy="110" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="90" cy="110" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="180" cy="110" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="180" cy="110" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+      <circle cx="270" cy="110" r="28" fill="#f4f6fa" stroke="#E03A2B" stroke-width="1.5" />
+      <circle cx="270" cy="110" r="14" fill="#E03A2B" fill-opacity="0.15" stroke="#E03A2B" stroke-width="1" />
+    </g>
+
+    <!-- Micro-Fluidic Runner System / Balanced Hot Runner Manifold -->
+    <path d="M -140,-110 L 130,-110 M -140,0 L 130,0 M -5,-110 L -5,0 M -5,-55 L 200,-55" fill="none" stroke="#1a1c22" stroke-opacity="0.3" stroke-width="1.5" stroke-dasharray="3 3" />
+    <circle cx="-5" cy="-55" r="6" fill="#E03A2B" />
+
+    <!-- High-Precision Guide Bushings & Alignment Leader Pins -->
+    <circle cx="-190" cy="-160" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.5" stroke-width="2" />
+    <circle cx="190" cy="-160" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.5" stroke-width="2" />
+    <circle cx="-190" cy="160" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.5" stroke-width="2" />
+    <circle cx="190" cy="160" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.5" stroke-width="2" />
+
+    <!-- Optical Inspection Caliper Mark -->
+    <line x1="260" y1="-190" x2="260" y2="190" stroke="#E03A2B" stroke-opacity="0.5" stroke-width="1" />
+    <polyline points="256,-185 260,-190 264,-185" fill="none" stroke="#E03A2B" stroke-width="1" />
+    <polyline points="256,185 260,190 264,185" fill="none" stroke="#E03A2B" stroke-width="1" />
+    <text x="280" y="5" text-anchor="middle" fill="#E03A2B" font-family="monospace" font-size="11" transform="rotate(90 280 5)">±0.002 mm</text>
+  </g>
+
+  <!-- Technical Spec HUD Panel (Bottom) -->
+  <g transform="translate(50, 840)">
+    <rect x="0" y="0" width="700" height="90" rx="10" fill="#ffffff" fill-opacity="0.85" stroke="#000000" stroke-opacity="0.08" stroke-width="1" />
+    <text x="24" y="32" fill="#0b0b0c" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="700">Cleanroom Precision Medical Tooling</text>
+    <text x="24" y="56" fill="#6b6b70" font-family="monospace" font-size="12">APPLICATIONS: Diagnostic Fluidic Cartridges, Dialysis Components, Surgical Housings</text>
+    <text x="24" y="74" fill="#E03A2B" font-family="monospace" font-size="11">CLASS: ISO 13485 COMPLIANT // TOLERANCE: ±0.002 mm</text>
+  </g>
+</svg>

@@ -58,7 +58,9 @@ export function DropdownPanel({
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (isOpen) {
-      setRendered(true);
+      timer = setTimeout(() => {
+        setRendered(true);
+      }, 0);
     } else {
       // Wait for closing animation (140ms) before setting visibility hidden
       timer = setTimeout(() => {

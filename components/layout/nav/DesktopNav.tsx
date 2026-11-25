@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import { type NavItem } from "@/lib/site";
@@ -140,7 +140,7 @@ export function DesktopNav({
                   onOpenItem(item, e.currentTarget);
                 }
               }}
-              onFocus={(e) => {
+              onFocus={() => {
                 setHoveredLabel(item.label);
               }}
               onBlur={() => {

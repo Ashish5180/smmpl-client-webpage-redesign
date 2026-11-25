@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%" fill="none">
+  <!-- Minimalist Frameless Silhouette // Mr. Anuj Kumar (GM - Business Development) -->
+  <g transform="translate(300, 310)">
+    <!-- Head & Hair Form -->
+    <path d="M 0,-185 C 48,-185 82,-148 82,-96 C 82,-44 48,-12 0,-12 C -48,-12 -82,-44 -82,-96 C -82,-148 -48,-185 0,-185 Z" fill="#181a1f" />
+    
+    <!-- Jawline & Neck Contour in subtle lighting -->
+    <path d="M -26,-24 L 26,-24 L 32,28 L -32,28 Z" fill="#262930" />
+
+    <!-- Modern Business Suit & Shoulders (Frameless, clean fade) -->
+    <path d="M -190,260 C -190,140 -130,55 0,55 C 130,55 190,140 190,260 Z" fill="#15171c" />
+    
+    <!-- White Crisp Shirt Collar & Modern Open Neckline -->
+    <polygon points="-34,55 0,110 34,55 22,55 0,90 -22,55" fill="#ffffff" />
+    
+    <!-- Modern Silk Tie Accent with Slim Profile -->
+    <polygon points="-8,90 8,90 10,230 0,260 -10,230" fill="#2d3139" />
+    
+    <!-- Lapel Seams -->
+    <path d="M -130,260 L -34,55 M 130,260 L 34,55" stroke="#ffffff" stroke-opacity="0.15" stroke-width="2" />
+  </g>
+</svg>

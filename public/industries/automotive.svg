@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="100%" height="100%">
+  <defs>
+    <linearGradient id="autoLightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fc" />
+      <stop offset="50%" stop-color="#f0f3f8" />
+      <stop offset="100%" stop-color="#e4e8f0" />
+    </linearGradient>
+    <pattern id="autoLightGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="1" />
+      <circle cx="0" cy="0" r="1" fill="#000000" fill-opacity="0.08" />
+    </pattern>
+    <linearGradient id="metalAutoLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#dce1eb" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="1000" fill="url(#autoLightBg)" />
+  <rect width="800" height="1000" fill="url(#autoLightGrid)" />
+
+  <!-- Technical Top Header -->
+  <g transform="translate(50, 70)">
+    <text x="0" y="0" fill="#E03A2B" font-family="monospace" font-size="12" font-weight="600" letter-spacing="0.1em">SECTOR: AUTO-01 // TIER-1 OEM</text>
+    <text x="700" y="0" text-anchor="end" fill="#6b6b70" font-family="monospace" font-size="11">HPDC &amp; TANDEM</text>
+    <line x1="0" y1="16" x2="700" y2="16" stroke="#000000" stroke-opacity="0.08" stroke-width="1" />
+  </g>
+
+  <!-- Engineering Automotive Component Wireframe (Chassis/Engine Die Cast & Tooling) -->
+  <g transform="translate(400, 480)">
+    <!-- Aerodynamic Chassis Contour Guide Arcs -->
+    <path d="M -300,-120 C -180,-240 180,-240 300,-120" fill="none" stroke="#E03A2B" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="6 4" />
+    <path d="M -320,-80 C -190,-200 190,-200 320,-80" fill="none" stroke="#000000" stroke-opacity="0.08" stroke-width="1" />
+
+    <!-- Main Structural Die-Casting / Injection Housing -->
+    <polygon points="-220,120 -150,-100 150,-100 220,120 120,220 -120,220" fill="url(#metalAutoLight)" stroke="#1a1c22" stroke-opacity="0.3" stroke-width="2" />
+    
+    <!-- Central Cylinder Bore / Bearing Pockets -->
+    <circle cx="0" cy="40" r="90" fill="#f4f6fa" stroke="#E03A2B" stroke-width="2" />
+    <circle cx="0" cy="40" r="60" fill="none" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="4 4" />
+    <circle cx="0" cy="40" r="24" fill="#E03A2B" fill-opacity="0.1" stroke="#E03A2B" stroke-width="1.5" />
+
+    <!-- Structural Ribbing & Reinforcement Webbing -->
+    <line x1="-150" y1="-100" x2="-64" y2="-24" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="150" y1="-100" x2="64" y2="-24" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="-220" y1="120" x2="-90" y2="40" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="220" y1="120" x2="90" y2="40" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="-120" y1="220" x2="-64" y2="104" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+    <line x1="120" y1="220" x2="64" y2="104" stroke="#1a1c22" stroke-opacity="0.25" stroke-width="2" />
+
+    <!-- Mounting Bosses & Bushing Holes -->
+    <circle cx="-160" cy="10" r="14" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="160" cy="10" r="14" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="-80" cy="-60" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.4" stroke-width="1.5" />
+    <circle cx="80" cy="-60" r="10" fill="#ffffff" stroke="#1a1c22" stroke-opacity="0.4" stroke-width="1.5" />
+
+    <!-- Dimension Callouts -->
+    <line x1="-260" y1="-100" x2="-260" y2="220" stroke="#E03A2B" stroke-opacity="0.5" stroke-width="1" />
+    <polyline points="-256,-95 -260,-100 -264,-95" fill="none" stroke="#E03A2B" stroke-width="1" />
+    <polyline points="-256,215 -260,220 -264,215" fill="none" stroke="#E03A2B" stroke-width="1" />
+    <text x="-275" y="65" text-anchor="middle" fill="#E03A2B" font-family="monospace" font-size="11" transform="rotate(-90 -275 65)">320.00 mm</text>
+  </g>
+
+  <!-- Technical Spec HUD Panel (Bottom) -->
+  <g transform="translate(50, 840)">
+    <rect x="0" y="0" width="700" height="90" rx="10" fill="#ffffff" fill-opacity="0.85" stroke="#000000" stroke-opacity="0.08" stroke-width="1" />
+    <text x="24" y="32" fill="#0b0b0c" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="700">Automotive Powertrain &amp; Structural Dies</text>
+    <text x="24" y="56" fill="#6b6b70" font-family="monospace" font-size="12">APPLICATIONS: HPDC Transmission Housings, Structural Sheet Metal, Checking Fixtures</text>
+    <text x="24" y="74" fill="#E03A2B" font-family="monospace" font-size="11">TOLERANCE: ±0.010 mm // CYCLE LIFE: 500,000+ SHOTS</text>
+  </g>
+</svg>

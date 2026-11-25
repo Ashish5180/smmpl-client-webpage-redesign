@@ -9,7 +9,6 @@ import {
   HERO_SLIDES,
   HERO_STATS,
   HERO_AUTOPLAY_DURATION_MS,
-  type HeroSlide,
 } from "@/lib/hero-slides";
 import { HeroControls } from "./HeroControls";
 import { HeroStats } from "./HeroStats";

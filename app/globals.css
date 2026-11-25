@@ -171,6 +171,80 @@ table,
   font-variant-numeric: tabular-nums;
 }
 
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.marquee-track-left {
+  animation: marquee-scroll-left 60s linear infinite;
+}
+
+.marquee-track-right {
+  animation: marquee-scroll-right 60s linear infinite;
+}
+
+.marquee-row:hover .marquee-track-left,
+.marquee-row:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+
+/* Flat minimal overrides for react-phone-number-input */
+.quote-phone-input {
+  --PhoneInput-color--focus: var(--color-brand-action);
+  --PhoneInputCountryFlag-borderColor: rgba(0, 0, 0, 0.15);
+  --PhoneInputCountryFlag-borderColor--focus: var(--color-brand-action);
+}
+
+.quote-phone-input .PhoneInputInput {
+  border: 0;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+.quote-phone-input .PhoneInputInput::placeholder {
+  color: #9ca3af;
+}
+
+.quote-phone-input .PhoneInputCountry {
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+  border-right: 1px solid var(--color-line);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -179,5 +253,19 @@ table,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marquee-mask {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .marquee-track-left,
+  .marquee-track-right {
+    animation: none !important;
+    transform: none !important;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

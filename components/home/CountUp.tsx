@@ -24,12 +24,7 @@ export function CountUp({
   const prefersReduced = useReducedMotion();
 
   useEffect(() => {
-    if (!inView) return;
-
-    if (prefersReduced) {
-      setDisplayValue(value);
-      return;
-    }
+    if (!inView || prefersReduced) return;
 
     let startTimestamp: number | null = null;
     let animationFrameId: number;
@@ -61,10 +56,11 @@ export function CountUp({
     };
   }, [value, duration, inView, prefersReduced]);
 
+  const currentValue = prefersReduced ? value : displayValue;
   const formatted =
     decimals > 0
-      ? displayValue.toFixed(decimals)
-      : Math.round(displayValue).toLocaleString();
+      ? currentValue.toFixed(decimals)
+      : Math.round(currentValue).toLocaleString();
 
   return (
     <span>

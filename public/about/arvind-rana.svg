@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%" fill="none">
+  <!-- Minimalist Frameless Silhouette // Mr. Arvind Rana (MD) -->
+  <g transform="translate(300, 310)">
+    <!-- Head & Hair Form -->
+    <path d="M 0,-185 C 48,-185 82,-148 82,-96 C 82,-44 48,-12 0,-12 C -48,-12 -82,-44 -82,-96 C -82,-148 -48,-185 0,-185 Z" fill="#181a1f" />
+    
+    <!-- Jawline & Neck Contour in subtle lighting -->
+    <path d="M -26,-24 L 26,-24 L 32,28 L -32,28 Z" fill="#262930" />
+
+    <!-- Tailored Executive Suit & Shoulders (Frameless, clean fade) -->
+    <path d="M -190,260 C -190,140 -130,55 0,55 C 130,55 190,140 190,260 Z" fill="#111215" />
+    
+    <!-- White Dress Shirt Collar -->
+    <polygon points="-36,55 0,115 36,55 24,55 0,95 -24,55" fill="#ffffff" />
+    
+    <!-- Red Executive Silk Tie Accent -->
+    <polygon points="-10,95 10,95 14,230 0,260 -14,230" fill="#E03A2B" />
+    
+    <!-- Lapel Seams -->
+    <path d="M -130,260 L -36,55 M 130,260 L 36,55" stroke="#ffffff" stroke-opacity="0.15" stroke-width="2" />
+  </g>
+</svg>
