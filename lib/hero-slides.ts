@@ -8,6 +8,7 @@ export interface HeroSlide {
   productName: string;
   image: string;
   alt: string;
+  blurDataURL?: string;
   ctaHref: string;
   secondaryCtaHref: string;
 }

@@ -3,11 +3,19 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { BLOG_SECTION_HEADER, getRecentBlogPosts } from "@/lib/blog-preview";
+import {
+  BLOG_SECTION_HEADER,
+  getRecentBlogPosts,
+  type BlogPostPreview,
+} from "@/lib/blog-preview";
 import { BlogPanels } from "./BlogPanels";
 
-export function BlogSection() {
-  const recentPosts = getRecentBlogPosts(3);
+interface BlogSectionProps {
+  posts?: BlogPostPreview[];
+}
+
+export function BlogSection({ posts }: BlogSectionProps) {
+  const recentPosts = posts && posts.length > 0 ? posts : getRecentBlogPosts(3);
 
   return (
     <section

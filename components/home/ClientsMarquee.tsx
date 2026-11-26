@@ -16,6 +16,7 @@ function ClientLogoBadge({ client }: { client: ClientItem }) {
           alt={client.logo.alt}
           width={client.logo.width}
           height={40}
+          unoptimized={client.logo.url.includes(".svg")}
           className="h-10 w-auto object-contain"
         />
       ) : (
@@ -72,16 +73,20 @@ function MarqueeRow({
 export function ClientsMarquee({ rowOne, rowTwo }: ClientsMarqueeProps) {
   return (
     <div className="mt-14 md:mt-16 space-y-4">
-      <MarqueeRow
-        items={rowOne}
-        direction="left"
-        label="Client partners row 1"
-      />
-      <MarqueeRow
-        items={rowTwo}
-        direction="right"
-        label="Client partners row 2"
-      />
+      {rowOne.length > 0 && (
+        <MarqueeRow
+          items={rowOne}
+          direction="left"
+          label="Client partners row 1"
+        />
+      )}
+      {rowTwo.length > 0 && (
+        <MarqueeRow
+          items={rowTwo}
+          direction="right"
+          label="Client partners row 2"
+        />
+      )}
     </div>
   );
 }

@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { DEFAULT_LEADERS, type LeadershipMember } from "@/sanity/lib/queries";
 import { AboutVisual } from "./AboutVisual";
 
 const TOOLING_CAPABILITIES = [
@@ -21,7 +22,11 @@ const TOOLING_CAPABILITIES = [
   { label: "Fixtures (Trimming, Checking, Shrinkage)", icon: Crosshair },
 ];
 
-export function AboutSection() {
+interface AboutSectionProps {
+  leaders?: LeadershipMember[];
+}
+
+export function AboutSection({ leaders }: AboutSectionProps) {
   return (
     <section
       id="about-smmipl"
@@ -106,9 +111,11 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column: Frameless Leadership Visual with Animated Drafting Shapes */}
+          {/* Right Column: Frameless Leadership Visual */}
           <div className="lg:col-span-6 w-full">
-            <AboutVisual />
+            <AboutVisual
+              leaders={leaders && leaders.length > 0 ? leaders : DEFAULT_LEADERS}
+            />
           </div>
         </div>
       </Container>

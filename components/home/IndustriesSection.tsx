@@ -1,8 +1,13 @@
 import React from "react";
 import { Container } from "@/components/ui/Container";
+import { DEFAULT_INDUSTRIES, type IndustryItem } from "@/sanity/lib/queries";
 import { IndustriesGrid } from "./IndustriesGrid";
 
-export function IndustriesSection() {
+interface IndustriesSectionProps {
+  industries?: IndustryItem[];
+}
+
+export function IndustriesSection({ industries }: IndustriesSectionProps) {
   return (
     <section
       id="industries-we-serve"
@@ -61,7 +66,11 @@ export function IndustriesSection() {
         </div>
 
         {/* 3-Panel Light Kinetic Expanding Accordion Grid */}
-        <IndustriesGrid />
+        <IndustriesGrid
+          industries={
+            industries && industries.length > 0 ? industries : DEFAULT_INDUSTRIES
+          }
+        />
       </Container>
     </section>
   );

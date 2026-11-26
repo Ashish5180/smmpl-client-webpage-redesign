@@ -5,68 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import type { IndustryItem } from "@/sanity/lib/queries";
 
-export interface IndustryItem {
-  id: string;
-  name: string;
-  image: string;
-  alt: string;
-  tag: string;
-  specs: string;
-  tolerance: string;
-  description: string;
-  href: string;
+interface IndustriesGridProps {
+  industries: IndustryItem[];
 }
 
-const INDUSTRIES: IndustryItem[] = [
-  {
-    id: "automotive",
-    name: "Automotive",
-    image: "/industries/automotive.svg",
-    alt: "High-precision automotive injection moulding and HPDC dies",
-    tag: "TIER-1 OEM SUPPLIER",
-    specs: "HPDC Dies, Tandem Tools, Checking Fixtures",
-    tolerance: "±0.010 mm",
-    description:
-      "Robust high-tonnage tooling for powertrain, structural chassis, and exterior trim components.",
-    href: "/products/casting-dies",
-  },
-  {
-    id: "home-appliances",
-    name: "Home Appliances",
-    image: "/industries/home-appliances.svg",
-    alt: "Aesthetic Class-A surface finish injection moulds for appliances",
-    tag: "CONSUMER DURABLES",
-    specs: "Plastic Moulds, High-Gloss Bezels, Snap-Fits",
-    tolerance: "SPI A1 Finish",
-    description:
-      "Flawless cosmetic surfaces (Ra < 0.05 µm) for refrigeration, laundry, and climate control systems.",
-    href: "/products/plastic-moulds",
-  },
-  {
-    id: "medical",
-    name: "Medical",
-    image: "/industries/medical.svg",
-    alt: "Cleanroom micro-tolerance multi-cavity moulds for medical devices",
-    tag: "HEALTHCARE & CLEANROOM",
-    specs: "Micro-Fluidic Manifolds, Multi-Cavity Tools",
-    tolerance: "±0.002 mm",
-    description:
-      "Micron-level repeatable cavities for diagnostic consumables, surgical devices, and fluidic housings.",
-    href: "/products/plastic-moulds",
-  },
-];
-
-export function IndustriesGrid() {
-  const [hoveredId, setHoveredId] = useState<string | null>("automotive");
+export function IndustriesGrid({ industries }: IndustriesGridProps) {
+  const [hoveredId, setHoveredId] = useState<string | null>(
+    industries[0]?.id ?? null
+  );
   const prefersReduced = useReducedMotion();
 
   return (
     <div className="relative w-full">
       {/* 3-Column Kinetic Expanding Stage (Light Theme) */}
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-6 min-h-[520px] lg:h-[580px] w-full">
-        {INDUSTRIES.map((industry, index) => {
+        {industries.map((industry, index) => {
           const isHovered = hoveredId === industry.id;
+          const isSvg = industry.image.endsWith(".svg");
 
           return (
             <motion.div
@@ -99,7 +56,9 @@ export function IndustriesGrid() {
                       ? "scale-[1.03] opacity-95"
                       : "scale-100 opacity-75"
                   }`}
-                  unoptimized
+                  unoptimized={isSvg}
+                  placeholder={industry.blurDataURL ? "blur" : "empty"}
+                  blurDataURL={industry.blurDataURL}
                 />
 
                 {/* Light Gradient Overlay to guarantee text legibility */}

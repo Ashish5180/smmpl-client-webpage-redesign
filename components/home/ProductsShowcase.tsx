@@ -57,14 +57,15 @@ export function ProductsShowcase({ products }: ProductsShowcaseProps) {
     }
   };
 
-  const activeProduct = products[activeIdx] ?? products[0];
+  const safeActiveIdx = products.length > 0 ? activeIdx % products.length : 0;
+  const activeProduct = products[safeActiveIdx] ?? products[0];
 
   return (
     <div className="hidden lg:grid lg:grid-cols-[55fr_45fr] lg:gap-12 xl:gap-16 items-start">
       {/* Left: 6-Row Vertical Product Index */}
       <ul className="border-t border-line">
         {products.map((product, index) => {
-          const isActive = index === activeIdx;
+          const isActive = index === safeActiveIdx;
 
           return (
             <motion.li
@@ -160,7 +161,9 @@ export function ProductsShowcase({ products }: ProductsShowcaseProps) {
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
-                unoptimized
+                unoptimized={activeProduct.image.url.endsWith(".svg")}
+                placeholder={activeProduct.image.blurDataURL ? "blur" : "empty"}
+                blurDataURL={activeProduct.image.blurDataURL}
               />
             </motion.div>
           </AnimatePresence>

@@ -10,7 +10,11 @@ import { DesktopNav } from "./nav/DesktopNav";
 import { DropdownPanel } from "./nav/DropdownPanel";
 import { MobileNav } from "./nav/MobileNav";
 
-export function Header() {
+interface HeaderProps {
+  phone?: string;
+}
+
+export function Header({ phone = siteConfig.phone }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -149,14 +153,14 @@ export function Header() {
 
         {/* Right (Desktop): Phone Link + Get a Quote CTA */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
-          {siteConfig.phone && (
+          {phone && (
             <a
-              href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, "")}`}
+              href={`tel:${phone.replace(/[^0-9+]/g, "")}`}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/80 hover:text-ink px-2.5 py-1.5 rounded-full hover:bg-black/[0.04] transition-colors focus-visible:outline-2 focus-visible:outline-brand"
-              aria-label={`Call us at ${siteConfig.phone}`}
+              aria-label={`Call us at ${phone}`}
             >
               <Phone className="w-3.5 h-3.5 text-brand" />
-              <span className="hidden xl:inline">{siteConfig.phone}</span>
+              <span className="hidden xl:inline">{phone}</span>
             </a>
           )}
 
@@ -205,7 +209,7 @@ export function Header() {
         navItems={siteConfig.navLinks}
         isOpen={mobileOpen}
         onClose={handleCloseMobile}
-        phone={siteConfig.phone}
+        phone={phone}
       />
     </>
   );

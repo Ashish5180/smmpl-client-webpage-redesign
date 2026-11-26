@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import type { SiteLayoutData } from "@/sanity/lib/queries";
 import { Container } from "@/components/ui/Container";
 import {
   FooterAnimationWrapper,
@@ -11,8 +12,14 @@ import {
 import { ScrollToTop } from "./footer/ScrollToTop";
 import { SocialIcon } from "./footer/SocialIcons";
 
-export function Footer() {
+interface FooterProps {
+  settings?: SiteLayoutData;
+}
+
+export function Footer({ settings }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const contact = settings ?? siteConfig.contact;
+  const socialLinks = settings?.socialLinks ?? siteConfig.socialLinks;
 
   return (
     <footer className="relative bg-ink text-paper overflow-hidden pt-16 md:pt-20 pb-12 border-t border-white/[0.08]">
@@ -180,10 +187,10 @@ export function Footer() {
                 <div className="flex items-start gap-3">
                   <Mail className="w-4 h-4 text-brand shrink-0 mt-1" aria-hidden="true" />
                   <a
-                    href={`mailto:${siteConfig.contact.email}`}
+                    href={`mailto:${contact.email}`}
                     className="hover:text-brand transition-colors focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded"
                   >
-                    {siteConfig.contact.email}
+                    {contact.email}
                   </a>
                 </div>
 
@@ -191,10 +198,10 @@ export function Footer() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-brand shrink-0" aria-hidden="true" />
                   <a
-                    href={`tel:${siteConfig.contact.phonePrimary.replace(/[^0-9+]/g, "")}`}
+                    href={`tel:${contact.phonePrimary.replace(/[^0-9+]/g, "")}`}
                     className="hover:text-brand transition-colors focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded"
                   >
-                    {siteConfig.contact.phonePrimary}
+                    {contact.phonePrimary}
                   </a>
                 </div>
 
@@ -202,10 +209,10 @@ export function Footer() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-brand shrink-0" aria-hidden="true" />
                   <a
-                    href={`tel:${siteConfig.contact.phoneSecondary.replace(/[^0-9+]/g, "")}`}
+                    href={`tel:${contact.phoneSecondary.replace(/[^0-9+]/g, "")}`}
                     className="hover:text-brand transition-colors focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded"
                   >
-                    {siteConfig.contact.phoneSecondary}
+                    {contact.phoneSecondary}
                   </a>
                 </div>
 
@@ -213,12 +220,12 @@ export function Footer() {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-brand shrink-0 mt-1" aria-hidden="true" />
                   <a
-                    href={siteConfig.contact.mapsUrl}
+                    href={contact.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-brand transition-colors leading-relaxed focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-1 rounded"
                   >
-                    {siteConfig.contact.address}
+                    {contact.address}
                   </a>
                 </div>
 
@@ -228,7 +235,7 @@ export function Footer() {
                     Connect With Us
                   </p>
                   <div className="flex items-center gap-3">
-                    {siteConfig.socialLinks.map((social) => (
+                    {socialLinks.map((social) => (
                       <a
                         key={social.name}
                         href={social.href}

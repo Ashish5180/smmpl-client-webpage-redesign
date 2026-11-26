@@ -1,7 +1,21 @@
-import type {StructureResolver} from 'sanity/structure'
+import type { StructureResolver } from "sanity/structure";
 
-// https://www.sanity.io/docs/structure-builder-cheat-sheet
+const SINGLETON_TYPES = new Set(["siteSettings"]);
+
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Content')
-    .items(S.documentTypeListItems())
+    .title("SMMIPL Website Content")
+    .items([
+      S.listItem()
+        .title("Site Settings (Stats, Leadership & Contact)")
+        .id("siteSettings")
+        .child(
+          S.document()
+            .schemaType("siteSettings")
+            .documentId("siteSettings")
+        ),
+      S.divider(),
+      ...S.documentTypeListItems().filter(
+        (listItem) => !SINGLETON_TYPES.has(listItem.getId() ?? "")
+      ),
+    ]);

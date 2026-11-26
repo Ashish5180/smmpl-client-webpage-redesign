@@ -3,11 +3,21 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { PRODUCTS_HEADER, PRODUCT_CATEGORIES } from "@/lib/products";
+import {
+  PRODUCTS_HEADER,
+  PRODUCT_CATEGORIES,
+  type ProductCategory,
+} from "@/lib/products";
 import { ProductsShowcase } from "./ProductsShowcase";
 import { ProductsAccordion } from "./ProductsAccordion";
 
-export function ProductsSection() {
+interface ProductsSectionProps {
+  products?: ProductCategory[];
+}
+
+export function ProductsSection({ products }: ProductsSectionProps) {
+  const activeProducts =
+    products && products.length > 0 ? products : PRODUCT_CATEGORIES;
   return (
     <section
       id="our-products"
@@ -52,10 +62,10 @@ export function ProductsSection() {
         </Reveal>
 
         {/* Desktop (>=1024px) 55/45 Interactive Index & Sticky Preview */}
-        <ProductsShowcase products={PRODUCT_CATEGORIES} />
+        <ProductsShowcase products={activeProducts} />
 
         {/* Tablet & Mobile (<1024px) Accordion */}
-        <ProductsAccordion products={PRODUCT_CATEGORIES} />
+        <ProductsAccordion products={activeProducts} />
       </Container>
     </section>
   );

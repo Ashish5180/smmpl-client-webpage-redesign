@@ -9,11 +9,17 @@ import {
   HERO_SLIDES,
   HERO_STATS,
   HERO_AUTOPLAY_DURATION_MS,
+  type HeroSlide,
 } from "@/lib/hero-slides";
 import { HeroControls } from "./HeroControls";
 import { HeroStats } from "./HeroStats";
 
-export function Hero() {
+interface HeroProps {
+  slides?: HeroSlide[];
+}
+
+export function Hero({ slides }: HeroProps) {
+  const activeSlides = slides && slides.length > 0 ? slides : HERO_SLIDES;
   const [activeIdx, setActiveIdx] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -25,7 +31,8 @@ export function Hero() {
   const lastTimeRef = useRef<number | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
-  const totalSlides = HERO_SLIDES.length;
+  const totalSlides = activeSlides.length;
+  const safeActiveIdx = activeIdx % totalSlides;
 
   const nextSlide = useCallback(() => {
     setActiveIdx((prev) => (prev + 1) % totalSlides);
@@ -133,8 +140,8 @@ export function Hero() {
   };
 
   // Mount only active and next slide for optimal performance
-  const nextIdx = (activeIdx + 1) % totalSlides;
-  const visibleIndices = [activeIdx, nextIdx];
+  const nextIdx = (safeActiveIdx + 1) % totalSlides;
+  const visibleIndices = totalSlides === 1 ? [0] : [safeActiveIdx, nextIdx];
 
   return (
     <section
@@ -154,9 +161,9 @@ export function Hero() {
       >
         {/* Full-bleed image slider */}
         <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-          {HERO_SLIDES.map((slide, idx) => {
+          {activeSlides.map((slide, idx) => {
             if (!visibleIndices.includes(idx)) return null;
-            const isActive = idx === activeIdx;
+            const isActive = idx === safeActiveIdx;
 
             return (
               <motion.div
@@ -178,19 +185,23 @@ export function Hero() {
                   sizes="100vw"
                   priority={idx === 0}
                   fetchPriority={idx === 0 ? "high" : "auto"}
-                  unoptimized
+                  unoptimized={slide.image.endsWith(".svg")}
+                  placeholder={slide.blurDataURL ? "blur" : "empty"}
+                  blurDataURL={slide.blurDataURL}
                   className="object-cover object-center w-full h-full"
                 />
               </motion.div>
             );
           })}
 
-          {/* White-to-transparent gradient over the left 55% of the panel */}
+          {/* Soft multi-stop editorial scrim: lets the photo bleed through on the left while preserving text legibility */}
           <div
             className="absolute inset-0 z-10 pointer-events-none"
             style={{
-              background:
-                "linear-gradient(90deg, #ffffff 0%, rgba(255,255,255,0.96) 30%, rgba(255,255,255,0.75) 45%, rgba(255,255,255,0) 55%)",
+              background: [
+                "linear-gradient(100deg, rgba(255,255,255,0.84) 0%, rgba(255,255,255,0.70) 22%, rgba(255,255,255,0.42) 42%, rgba(255,255,255,0.12) 60%, rgba(255,255,255,0) 76%)",
+                "radial-gradient(ellipse 48% 36% at 16% 92%, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0) 100%)",
+              ].join(", "),
             }}
           />
         </div>
@@ -201,7 +212,7 @@ export function Hero() {
             {/* Eyebrow: "Precision Manufacturing" with the red line */}
             <div className="flex items-center gap-2 mb-3 sm:mb-4">
               <span className="w-5 h-[2px] bg-brand inline-block rounded-full" />
-              <span className="text-xs font-semibold tracking-wider uppercase text-neutral-600 font-body">
+              <span className="text-xs font-semibold tracking-wider uppercase text-neutral-700 font-body">
                 {HERO_CONTENT.eyebrow}
               </span>
             </div>
@@ -214,8 +225,8 @@ export function Hero() {
               {" "}{HERO_CONTENT.headlineLine2}
             </h1>
 
-            {/* Subtext: max-width 480px, 1.05rem, gray-600, 2 lines max */}
-            <p className="text-neutral-600 text-[1rem] sm:text-[1.05rem] leading-[1.45] mt-3 sm:mt-4 max-w-[480px] font-body">
+            {/* Subtext: max-width 480px, 1.05rem, gray-700, 2 lines max */}
+            <p className="text-neutral-700 text-[1rem] sm:text-[1.05rem] leading-[1.45] mt-3 sm:mt-4 max-w-[480px] font-body">
               {HERO_CONTENT.subtext}
             </p>
 
@@ -245,8 +256,8 @@ export function Hero() {
 
         {/* Controls: Progress indicators bottom-center, Chip & Next/Prev buttons bottom-right */}
         <HeroControls
-          slides={HERO_SLIDES}
-          activeIdx={activeIdx}
+          slides={activeSlides}
+          activeIdx={safeActiveIdx}
           progressPercent={progress}
           isPaused={isPaused}
           onSelectSlide={selectSlide}

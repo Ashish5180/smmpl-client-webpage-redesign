@@ -1,12 +1,26 @@
 import React from "react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { TRUSTED_HEADER, HOME_STATS } from "@/lib/stats";
-import { CLIENT_ROW_ONE, CLIENT_ROW_TWO } from "@/lib/clients";
+import { TRUSTED_HEADER, HOME_STATS, type StatItem } from "@/lib/stats";
+import { CLIENT_ROW_ONE, CLIENT_ROW_TWO, type ClientItem } from "@/lib/clients";
 import { StatsBand } from "./StatsBand";
 import { ClientsMarquee } from "./ClientsMarquee";
 
-export function TrustedSection() {
+interface TrustedSectionProps {
+  stats?: StatItem[];
+  clientRows?: {
+    rowOne: ClientItem[];
+    rowTwo: ClientItem[];
+  };
+}
+
+export function TrustedSection({ stats, clientRows }: TrustedSectionProps) {
+  const activeStats = stats && stats.length > 0 ? stats : HOME_STATS;
+  const rowOne =
+    clientRows && clientRows.rowOne.length > 0
+      ? clientRows.rowOne
+      : CLIENT_ROW_ONE;
+  const rowTwo = clientRows ? clientRows.rowTwo : CLIENT_ROW_TWO;
   return (
     <section
       id="trusted-by"
@@ -33,10 +47,10 @@ export function TrustedSection() {
         </Reveal>
 
         {/* Stats Band */}
-        <StatsBand stats={HOME_STATS} />
+        <StatsBand stats={activeStats} />
 
         {/* Two-Row Opposite-Direction CSS Marquee */}
-        <ClientsMarquee rowOne={CLIENT_ROW_ONE} rowTwo={CLIENT_ROW_TWO} />
+        <ClientsMarquee rowOne={rowOne} rowTwo={rowTwo} />
       </Container>
     </section>
   );

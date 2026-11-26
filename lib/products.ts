@@ -6,6 +6,7 @@
 export interface ProductImage {
   url: string;
   alt: string;
+  blurDataURL?: string;
 }
 
 export interface ProductCategory {

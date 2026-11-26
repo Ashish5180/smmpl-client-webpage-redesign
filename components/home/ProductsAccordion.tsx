@@ -100,7 +100,9 @@ export function ProductsAccordion({ products }: ProductsAccordionProps) {
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         className="object-cover"
-                        unoptimized
+                        unoptimized={product.image.url.endsWith(".svg")}
+                        placeholder={product.image.blurDataURL ? "blur" : "empty"}
+                        blurDataURL={product.image.blurDataURL}
                       />
                     </div>
 
